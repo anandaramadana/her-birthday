@@ -124,7 +124,7 @@ export default function CelebrateStage2() {
         <div className="flex justify-center pb-32">
           <Link
             to="/celebrate/stage3"
-            className="group relative px-10 py-4 rounded-full text-white font-semibold text-lg md:text-xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/30"
+            className="group relative px-8 py-3 md:px-10 md:py-4 rounded-full text-white font-semibold text-base md:text-xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/30 touch-manipulation"
             style={{
               background: 'linear-gradient(135deg, #ff6b9d 0%, #c44eb9 25%, #ff6b9d 50%, #ff8fab 75%, #c44eb9 100%)',
               backgroundSize: '200% 200%',

@@ -70,7 +70,7 @@ export default function Home() {
           </>
         ) : (
           /* Birthday Reveal Content */
-          <div className="flex flex-col items-center justify-center gap-8">
+          <div className="flex flex-col items-center justify-center gap-6 md:gap-8 max-w-full">
             {/* Typing Text */}
             <TextType
               text={["halooo, di klik ya sayang 💕"]}
@@ -80,14 +80,14 @@ export default function Home() {
               cursorCharacter="|"
               deletingSpeed={60}
               loop={false}
-              className="text-3xl md:text-5xl font-bold text-white text-center"
+              className="text-2xl md:text-5xl font-bold text-white text-center px-4"
               cursorClassName="text-pink-400"
             />
 
             {/* Pink Gradient Button */}
             <Link
               to="/celebrate"
-              className="group relative mt-6 px-10 py-4 rounded-full text-white font-semibold text-lg md:text-xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/30"
+              className="group relative mt-4 md:mt-6 px-8 py-3 md:px-10 md:py-4 rounded-full text-white font-semibold text-base md:text-xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/30 touch-manipulation"
               style={{
                 background: 'linear-gradient(135deg, #ff6b9d 0%, #c44eb9 25%, #ff6b9d 50%, #ff8fab 75%, #c44eb9 100%)',
                 backgroundSize: '200% 200%',

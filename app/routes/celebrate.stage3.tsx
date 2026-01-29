@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import type { Route } from "./+types/celebrate.stage3";
 import ElasticSlider from "../components/ElasticSlider";
 import DomeGallery from "../components/DomeGallery";
+import { useMobile } from "../hooks/useMobile";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -36,6 +37,7 @@ const galleryImages = [
 ];
 
 export default function CelebrateStage3() {
+  const isMobile = useMobile();
   const [showGallery, setShowGallery] = useState(false);
   const [volumeValue, setVolumeValue] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -154,10 +156,12 @@ export default function CelebrateStage3() {
           <DomeGallery
             images={galleryImages}
             fit={0.8}
-            minRadius={600}
+            minRadius={isMobile ? 300 : 600}
             maxVerticalRotationDeg={0}
-            segments={34}
+            segments={isMobile ? 20 : 34}
             dragDampening={2}
+            openedImageWidth={isMobile ? "90vw" : "400px"}
+            openedImageHeight={isMobile ? "auto" : "400px"}
             grayscale={false}
             overlayBlurColor="#000000"
           />

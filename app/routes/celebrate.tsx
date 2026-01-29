@@ -3,6 +3,7 @@ import type { Route } from "./+types/celebrate";
 import Galaxy from "../components/Galaxy";
 import BounceCards from "../components/BounceCards";
 import CountUp from "../components/CountUp";
+import { useMobile } from "../hooks/useMobile";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -28,7 +29,16 @@ const transformStyles = [
   "rotate(-5deg) translate(150px)"
 ];
 
+const transformStylesMobile = [
+  "rotate(10deg) translate(0px, -60px)",
+  "rotate(5deg) translate(0px, -30px)",
+  "rotate(0deg)",
+  "rotate(-5deg) translate(0px, 30px)",
+  "rotate(-10deg) translate(0px, 60px)"
+];
+
 export default function Celebrate() {
+  const isMobile = useMobile();
   return (
     <div className="w-full min-h-screen overflow-hidden bg-black">
       {/* Galaxy Background */}
@@ -58,19 +68,19 @@ export default function Celebrate() {
           <BounceCards
             className="custom-bounceCards"
             images={images}
-            containerWidth={500}
-            containerHeight={250}
+            containerWidth={isMobile ? 300 : 500}
+            containerHeight={isMobile ? 300 : 250}
             animationDelay={0.5}
             animationStagger={0.08}
             easeType="elastic.out(1, 0.5)"
-            transformStyles={transformStyles}
+            transformStyles={isMobile ? transformStylesMobile : transformStyles}
             enableHover
           />
         </div>
 
         {/* Birthday Text with CountUp Animation */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold">
+        <div className="text-center mb-12 px-2">
+          <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold leading-tight">
             <span className="text-white">Selamat Ulang Tahun yang ke </span>
             <span 
               className="inline-block font-extrabold"
@@ -99,7 +109,7 @@ export default function Celebrate() {
         {/* Button to Next Stage */}
         <Link
           to="/celebrate/stage2"
-          className="group relative px-10 py-4 rounded-full text-white font-semibold text-lg md:text-xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/30"
+          className="group relative px-8 py-3 md:px-10 md:py-4 rounded-full text-white font-semibold text-base md:text-xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/30 touch-manipulation"
           style={{
             background: 'linear-gradient(135deg, #ff6b9d 0%, #c44eb9 25%, #ff6b9d 50%, #ff8fab 75%, #c44eb9 100%)',
             backgroundSize: '200% 200%',
